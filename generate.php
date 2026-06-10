@@ -1,5 +1,6 @@
 <?php
 require(__DIR__ . '/../../config.php');
+require_once($CFG->dirroot . '/local/bookcourse/lib.php');
 require_once($CFG->libdir . '/filelib.php');
 
 $courseid = required_param('courseid', PARAM_INT);
@@ -17,8 +18,6 @@ $PAGE->set_heading($course->fullname);
 
 if (data_submitted() && confirm_sesskey()) {
     if (!empty($_FILES['tocfile']['tmp_name']) && !empty($_FILES['bookfile']['tmp_name'])) {
-        echo $OUTPUT->header();
-
         $fs = get_file_storage();
         $itemid = time();
 
@@ -42,23 +41,33 @@ if (data_submitted() && confirm_sesskey()) {
         ];
         $fs->create_file_from_pathname($fileinfo_book, $_FILES['bookfile']['tmp_name']);
 
+        local_bookcourse_status_create($courseid, (int) $USER->id, $itemid);
+
         $task = new \local_bookcourse\task\generate_bookcourse_task();
         $task->set_custom_data([
             'courseid' => $courseid,
             'itemid'   => $itemid,
         ]);
         $task->set_component('local_bookcourse');
+        $task->set_userid((int) $USER->id);
         \core\task\manager::queue_adhoc_task($task);
 
-        echo $OUTPUT->notification('Generation has been queued. Lessons will appear after cron runs.', 'notifysuccess');
-        echo $OUTPUT->continue_button(new moodle_url('/course/view.php', ['id' => $courseid]));
-        echo $OUTPUT->footer();
-        exit;
+        redirect(new moodle_url('/local/bookcourse/status.php', [
+            'courseid' => $courseid,
+            'itemid'   => $itemid,
+        ]));
     }
 }
 
 echo $OUTPUT->header();
 echo html_writer::tag('h3', get_string('generateheading', 'local_bookcourse'));
+echo html_writer::div(
+    html_writer::link(
+        new moodle_url('/local/bookcourse/status.php', ['courseid' => $courseid]),
+        get_string('statusheading', 'local_bookcourse')
+    ),
+    'mb-2'
+);
 
 echo html_writer::start_tag('form', [
     'method'  => 'post',
@@ -72,7 +81,7 @@ echo html_writer::empty_tag('input', [
 ]);
 
 echo html_writer::tag('p',
-    'Table of Contents file (PDF/Image): ' .
+    get_string('generatetoclabel', 'local_bookcourse') . ' ' .
     html_writer::empty_tag('input', [
         'type'     => 'file',
         'name'     => 'tocfile',
@@ -81,7 +90,7 @@ echo html_writer::tag('p',
 );
 
 echo html_writer::tag('p',
-    'Book PDF: ' .
+    get_string('generatebooklabel', 'local_bookcourse') . ' ' .
     html_writer::empty_tag('input', [
         'type'     => 'file',
         'name'     => 'bookfile',
@@ -89,7 +98,8 @@ echo html_writer::tag('p',
     ])
 );
 
-echo html_writer::tag('p', 'Note: Book PDF should not contain Table of Contents page(s).');
+echo html_writer::tag('p', get_string('generatebooknote', 'local_bookcourse'));
+echo html_writer::tag('p', get_string('generateqbankhint', 'local_bookcourse'), ['class' => 'text-muted']);
 
 echo html_writer::empty_tag('input', [
     'type'  => 'submit',

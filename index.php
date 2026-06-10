@@ -17,9 +17,7 @@ if ($courseid) {
     $url = new moodle_url('/local/bookcourse/generate.php', ['courseid' => $courseid]);
     echo $OUTPUT->single_button($url, get_string('generateheading', 'local_bookcourse'));
 } else {
-    global $CFG;
-    echo html_writer::tag('p', 'Provide a courseid in the URL to start generation, e.g.:');
-    echo html_writer::tag('pre', $CFG->wwwroot . '/local/bookcourse/generate.php?courseid=2');
+    echo html_writer::tag('p', get_string('index_needcourse', 'local_bookcourse'));
 }
 
 echo $OUTPUT->footer();
