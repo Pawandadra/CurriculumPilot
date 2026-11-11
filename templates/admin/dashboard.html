@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>CurriculumPilot — Access keys</title>
+  <style>
+    :root {
+      --bg: #f1f5f9;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --primary: #2563eb;
+      --primary-soft: #eff6ff;
+      --primary-hover: #1d4ed8;
+      --success-bg: #ecfdf5;
+      --success-border: #6ee7b7;
+      --success-text: #065f46;
+      --danger: #dc2626;
+      --danger-soft: #fef2f2;
+      --radius: 12px;
+      --shadow: 0 1px 3px rgba(15, 23, 42, 0.06), 0 4px 12px rgba(15, 23, 42, 0.04);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      font-size: 0.95rem;
+    }
+    .layout {
+      max-width: 88rem;
+      margin: 0 auto;
+      padding: 1.25rem 1.25rem 3rem;
+    }
+    header.top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+    }
+    .brand {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .brand strong {
+      display: block;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-transform: none;
+      color: var(--text);
+      margin-top: 0.2rem;
+    }
+    nav.links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+    nav.links a {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.45rem 0.85rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      transition: background 0.15s, border-color 0.15s;
+    }
+    nav.links a:hover {
+      background: var(--primary-soft);
+      border-color: #bfdbfe;
+      color: var(--primary-hover);
+    }
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      padding: 1.5rem 1.5rem 1.35rem;
+      margin-bottom: 1.25rem;
+    }
+    .callout {
+      margin-top: 0;
+      padding: 0.85rem 1rem;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+    .callout.success {
+      background: var(--success-bg);
+      border: 1px solid var(--success-border);
+      color: var(--success-text);
+    }
+    .callout.success code {
+      display: block;
+      margin-top: 0.65rem;
+      padding: 0.75rem 0.85rem;
+      background: #0f172a;
+      color: #6ee7b7;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      word-break: break-all;
+      line-height: 1.4;
+    }
+    h2.section {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin: 0 0 0.85rem;
+    }
+    .form-grid label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.35rem;
+    }
+    .form-grid input[type="text"],
+    .form-grid input[type="date"],
+    .form-grid textarea {
+      width: 100%;
+      padding: 0.55rem 0.65rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.95rem;
+    }
+    .form-grid textarea {
+      min-height: 4.5rem;
+      resize: vertical;
+      line-height: 1.45;
+    }
+    .form-grid input:focus,
+    .form-grid textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    }
+    .form-grid .field { margin-bottom: 0; }
+    .form-grid .form-row-fields {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      gap: 1rem 1.25rem;
+    }
+    .form-grid .form-row-fields .field {
+      flex: 1 1 14rem;
+      min-width: 0;
+    }
+    .form-grid .form-row-desc {
+      margin-top: 1rem;
+    }
+    .form-grid .form-row-desc .field {
+      max-width: 100%;
+    }
+    .form-grid .form-row-submit {
+      margin-top: 1rem;
+    }
+    @media (max-width: 36rem) {
+      .form-grid .form-row-fields { flex-direction: column; }
+      .form-grid .form-row-fields .field { flex: 1 1 auto; width: 100%; }
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.55rem 1.1rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.15s, box-shadow 0.15s;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+    }
+    .btn-primary:hover { background: var(--primary-hover); }
+    .btn-ghost {
+      background: var(--surface);
+      color: var(--danger);
+      border: 1px solid #fecaca;
+    }
+    .btn-ghost:hover { background: var(--danger-soft); }
+    .btn-sm {
+      padding: 0.35rem 0.65rem;
+      font-size: 0.8rem;
+    }
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    th, td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
+    th {
+      background: #f8fafc;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+    }
+    tr:last-child td { border-bottom: none; }
+    tbody tr:hover td { background: #fafbfc; }
+    td.mono code {
+      font-family: ui-monospace, Menlo, monospace;
+      font-size: 0.82em;
+      color: #475569;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.55rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      border-radius: 999px;
+    }
+    .badge-active { background: #d1fae5; color: #065f46; }
+    .badge-expired { background: #ffedd5; color: #9a3412; }
+    .badge-revoked { background: #f1f5f9; color: #64748b; }
+    .actions {
+      min-width: 26rem;
+      white-space: nowrap;
+    }
+    .actions-row {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      gap: 0.65rem 0.85rem;
+    }
+    .actions-row .revoke-form {
+      margin: 0;
+      flex: 0 0 auto;
+    }
+    .actions-row .expiry-form {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      gap: 0.45rem 0.55rem;
+      margin: 0;
+      flex: 0 0 auto;
+    }
+    .actions-row .expiry-form .expiry-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .actions-row .expiry-form input[type="date"] {
+      width: auto;
+      min-width: 9.5rem;
+      padding: 0.35rem 0.45rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.8rem;
+    }
+    @media (max-width: 70rem) {
+      .actions { white-space: normal; }
+      .actions-row { flex-wrap: wrap; }
+    }
+    .empty {
+      color: var(--muted);
+      padding: 1rem 0;
+    }
+    .exp { white-space: nowrap; }
+    td.td-desc {
+      max-width: 18rem;
+      vertical-align: top;
+    }
+    td.td-desc .empty {
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+    .desc-cell .desc-content {
+      font-size: 0.86rem;
+      line-height: 1.4;
+      color: var(--text);
+      word-break: break-word;
+      white-space: pre-wrap;
+    }
+    .desc-cell:not(.expanded) .desc-content {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+      line-clamp: 3;
+      overflow: hidden;
+    }
+    .desc-cell.expanded .desc-content {
+      display: block;
+      -webkit-line-clamp: unset;
+      line-clamp: unset;
+      overflow: visible;
+    }
+    .desc-toggle {
+      margin-top: 0.35rem;
+      padding: 0;
+      border: none;
+      background: none;
+      font: inherit;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--primary);
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .desc-toggle:hover {
+      color: var(--primary-hover);
+    }
+    .desc-toggle:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+      border-radius: 3px;
+    }
+    .desc-toggle[hidden] {
+      display: none !important;
+    }
+    .charts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 0.25rem;
+    }
+    .chart-card {
+      padding: 1.1rem 1.15rem 1rem;
+      display: flex;
+      flex-direction: column;
+    }
+    .chart-card .chart-title {
+      margin: 0 0 0.35rem;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .chart-card .chart-sub {
+      margin: 0 0 0.75rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+    .chart-canvas-wrap {
+      position: relative;
+      flex: 1;
+      min-height: 220px;
+      max-height: 280px;
+    }
+    .chart-canvas-wrap canvas {
+      max-height: 260px;
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <header class="top">
+      <div class="brand">Operator console<strong>Access keys</strong></div>
+      <nav class="links">
+        <a href="/admin/logout">Sign out</a>
+      </nav>
+    </header>
+
+    {% if flash_new_key %}
+    <div class="card" style="padding:1rem 1.25rem;margin-bottom:1.25rem">
+      <div class="callout success">
+        <strong>New key — copy now.</strong> It will not be shown again.
+        <code>{{ flash_new_key }}</code>
+      </div>
+    </div>
+    {% endif %}
+
+    <h2 class="section">Overview</h2>
+    <div class="charts-grid">
+      <div class="card chart-card">
+        <h3 class="chart-title">Keys by status</h3>
+        <p class="chart-sub">Current state of all access keys.</p>
+        <div class="chart-canvas-wrap">
+          <canvas id="chartStatus" aria-label="Keys by status chart"></canvas>
+        </div>
+      </div>
+      <div class="card chart-card">
+        <h3 class="chart-title">Created per month</h3>
+        <p class="chart-sub">Last 12 months (UTC).</p>
+        <div class="chart-canvas-wrap">
+          <canvas id="chartCreated" aria-label="Keys created per month chart"></canvas>
+        </div>
+      </div>
+      <div class="card chart-card">
+        <h3 class="chart-title">Keys expiring by month</h3>
+        <p class="chart-sub">Non-revoked keys whose expiry falls in that calendar month (UTC, next 12 months).</p>
+        <div class="chart-canvas-wrap">
+          <canvas id="chartExpiring" aria-label="Keys expiring by month chart"></canvas>
+        </div>
+      </div>
+    </div>
+    <script type="application/json" id="admin-chart-data">{{ chart_data_json|safe }}</script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" crossorigin="anonymous"></script>
+    <script>
+(function () {
+  function go() {
+    if (typeof Chart === 'undefined') return;
+    var el = document.getElementById('admin-chart-data');
+    if (!el || !el.textContent) return;
+    var D = JSON.parse(el.textContent);
+    var grid = 'rgba(148, 163, 184, 0.35)';
+    var text = '#64748b';
+    var font = { family: "ui-sans-serif, system-ui, sans-serif", size: 11 };
+
+    var statusColors = ['#22c55e', '#f97316', '#94a3b8'];
+    new Chart(document.getElementById('chartStatus'), {
+      type: 'doughnut',
+      data: {
+        labels: D.status.labels,
+        datasets: [{
+          data: D.status.counts,
+          backgroundColor: statusColors,
+          borderWidth: 2,
+          borderColor: '#fff',
+        }],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'bottom', labels: { color: text, font: font, boxWidth: 12 } },
+        },
+      },
+    });
+
+    new Chart(document.getElementById('chartCreated'), {
+      type: 'bar',
+      data: {
+        labels: D.created_by_month.labels,
+        datasets: [{
+          label: 'Created',
+          data: D.created_by_month.counts,
+          backgroundColor: 'rgba(37, 99, 235, 0.75)',
+          borderRadius: 6,
+          borderSkipped: false,
+        }],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          x: {
+            grid: { color: grid },
+            ticks: { color: text, font: font, maxRotation: 45, minRotation: 0 },
+          },
+          y: {
+            beginAtZero: true,
+            ticks: { color: text, font: font },
+            grid: { color: grid },
+          },
+        },
+        plugins: { legend: { display: false } },
+      },
+    });
+
+    new Chart(document.getElementById('chartExpiring'), {
+      type: 'bar',
+      data: {
+        labels: D.expiring_by_month.labels,
+        datasets: [{
+          label: 'Expiring',
+          data: D.expiring_by_month.counts,
+          backgroundColor: 'rgba(249, 115, 22, 0.78)',
+          borderRadius: 6,
+          borderSkipped: false,
+        }],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          x: {
+            grid: { color: grid },
+            ticks: { color: text, font: font, maxRotation: 45, minRotation: 0 },
+          },
+          y: {
+            beginAtZero: true,
+            ticks: { color: text, font: font },
+            grid: { color: grid },
+          },
+        },
+        plugins: { legend: { display: false } },
+      },
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', go);
+  } else {
+    go();
+  }
+})();
+    </script>
+
+    <h2 class="section">Create key</h2>
+    <div class="card">
+      <form method="post" action="/admin/keys/create" class="form-grid">
+        <div class="form-row-fields">
+          <div class="field">
+            <label for="label">Label <span style="font-weight:400;color:var(--muted)">(optional)</span></label>
+            <input id="label" name="label" type="text" maxlength="200" placeholder="College or organisation name"/>
+          </div>
+          <div class="field">
+            <label for="expires_on">Expires on <span style="font-weight:400;color:var(--muted)">(UTC, end of day)</span></label>
+            <input id="expires_on" name="expires_on" type="date" value="{{ default_expiry_date }}"/>
+          </div>
+        </div>
+        <div class="form-row-desc">
+          <div class="field">
+            <label for="description">Description <span style="font-weight:400;color:var(--muted)">(optional)</span></label>
+            <textarea id="description" name="description" maxlength="2000" placeholder="Details for reference" rows="3"></textarea>
+          </div>
+        </div>
+        <div class="form-row-submit">
+          <button type="submit" class="btn btn-primary">Create key</button>
+        </div>
+      </form>
+    </div>
+
+    <h2 class="section">Existing keys</h2>
+    {% if keys %}
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Label</th>
+            <th>Description</th>
+            <th>Prefix</th>
+            <th>Created</th>
+            <th>Expires</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for k in keys %}
+          <tr>
+            <td>{{ k.id }}</td>
+            <td>{{ k.label or "—" }}</td>
+            <td class="td-desc">
+              {% if k.description %}
+              <div class="desc-cell" data-has-desc="1">
+                <div class="desc-content">{{ k.description }}</div>
+                <button type="button" class="desc-toggle" aria-expanded="false" hidden>View more</button>
+              </div>
+              {% else %}
+              <span class="empty">—</span>
+              {% endif %}
+            </td>
+            <td class="mono"><code>{{ k.token_prefix }}</code></td>
+            <td>{{ k.created_at }}</td>
+            <td class="exp">{{ k.expires_at }}</td>
+            <td>
+              {% if k.revoked_at %}
+              <span class="badge badge-revoked">Revoked</span>
+              {% elif k.is_expired %}
+              <span class="badge badge-expired">Expired</span>
+              {% else %}
+              <span class="badge badge-active">Active</span>
+              {% endif %}
+            </td>
+            <td class="actions">
+              {% if k.revoked_at or k.is_expired %}
+              <form class="delete-form" method="post" action="/admin/keys/{{ k.id }}/delete" onsubmit="return confirm('Permanently delete this key record? This cannot be undone.');">
+                <button class="btn btn-ghost btn-sm" type="submit">Delete</button>
+              </form>
+              {% else %}
+              <div class="actions-row">
+                <form class="revoke-form" method="post" action="/admin/keys/{{ k.id }}/revoke" onsubmit="return confirm('Revoke this key? It cannot be undone.');">
+                  <button class="btn btn-ghost btn-sm" type="submit">Revoke</button>
+                </form>
+                <form class="expiry-form" method="post" action="/admin/keys/{{ k.id }}/expiry">
+                  <span class="expiry-label" id="exp-lbl-{{ k.id }}">Expiry</span>
+                  <input id="exp-{{ k.id }}" name="expires_on" type="date" required value="{{ k.expires_at_eod_date }}" aria-labelledby="exp-lbl-{{ k.id }}"/>
+                  <button class="btn btn-primary btn-sm" type="submit">Update</button>
+                </form>
+              </div>
+              {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% else %}
+    <p class="empty">No keys yet. Create one above.</p>
+    {% endif %}
+  </div>
+  <script>
+(function () {
+  function refreshToggle(cell) {
+    var btn = cell.querySelector('.desc-toggle');
+    var content = cell.querySelector('.desc-content');
+    if (!btn || !content) return;
+    if (cell.classList.contains('expanded')) {
+      btn.hidden = false;
+      btn.textContent = 'View less';
+      btn.setAttribute('aria-expanded', 'true');
+      return;
+    }
+    btn.textContent = 'View more';
+    btn.setAttribute('aria-expanded', 'false');
+    cell.classList.remove('expanded');
+    void content.offsetHeight;
+    var overflow = content.scrollHeight > content.clientHeight + 2;
+    btn.hidden = !overflow;
+  }
+
+  function collapseAllDescCells() {
+    document.querySelectorAll('.desc-cell.expanded').forEach(function (cell) {
+      cell.classList.remove('expanded');
+      refreshToggle(cell);
+    });
+  }
+
+  function initDescToggles() {
+    document.querySelectorAll('.desc-cell[data-has-desc]').forEach(function (cell) {
+      var btn = cell.querySelector('.desc-toggle');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var wasExpanded = cell.classList.contains('expanded');
+        collapseAllDescCells();
+        if (!wasExpanded) {
+          cell.classList.add('expanded');
+          btn.hidden = false;
+          btn.textContent = 'View less';
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+      refreshToggle(cell);
+    });
+  }
+
+  function onResize() {
+    document.querySelectorAll('.desc-cell[data-has-desc]').forEach(function (cell) {
+      if (!cell.classList.contains('expanded')) refreshToggle(cell);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initDescToggles);
+  } else {
+    initDescToggles();
+  }
+  window.addEventListener('resize', onResize);
+})();
+  </script>
+</body>
+</html>

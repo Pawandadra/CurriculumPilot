@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Sign in · CurriculumPilot</title>
+  <style>
+    :root {
+      --page-bg-top: #1e293b;
+      --page-bg-bottom: #0f172a;
+      --surface: #ffffff;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --muted: #64748b;
+      --accent: #2563eb;
+      --accent-hover: #1d4ed8;
+      --accent-ring: rgba(37, 99, 235, 0.22);
+      --panel: #f8fafc;
+      --danger-bg: #fef2f2;
+      --danger-text: #991b1b;
+      --danger-border: #fecaca;
+      --radius-card: 16px;
+      --radius-input: 10px;
+      --shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.07), 0 10px 24px -6px rgba(15, 23, 42, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.5;
+      color: var(--text);
+      background: linear-gradient(165deg, var(--page-bg-top) 0%, var(--page-bg-bottom) 48%, #020617 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(1rem, 4vw, 2rem);
+    }
+    .shell {
+      width: 100%;
+      max-width: 420px;
+    }
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: var(--shadow);
+      padding: clamp(1.75rem, 4vw, 2.25rem) clamp(1.5rem, 4vw, 2rem) 2rem;
+    }
+    .logo {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: -0.01em;
+      margin-bottom: 0.25rem;
+    }
+    .logo span {
+      color: var(--text);
+    }
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin: 0 0 0.375rem;
+      line-height: 1.25;
+    }
+    .lead {
+      margin: 0 0 1.5rem;
+      font-size: 0.9375rem;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+    .err {
+      background: var(--danger-bg);
+      color: var(--danger-text);
+      font-size: 0.875rem;
+      padding: 0.75rem 0.875rem;
+      border-radius: var(--radius-input);
+      margin-bottom: 1.25rem;
+      border: 1px solid var(--danger-border);
+      line-height: 1.4;
+    }
+    form { margin: 0; }
+    .stack {
+      margin-bottom: 1.25rem;
+    }
+    .stack:last-of-type { margin-bottom: 0; }
+    label.field-label {
+      display: block;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.375rem;
+    }
+    .support {
+      margin: 0 0 0.5rem;
+      font-size: 0.8125rem;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+    input[type="password"],
+    input[type="text"] {
+      width: 100%;
+      padding: 0.6875rem 0.875rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-input);
+      font-size: 1rem;
+      line-height: 1.35;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+      background: #fff;
+    }
+    input::placeholder { color: #94a3b8; }
+    input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px var(--accent-ring);
+    }
+    .verify-panel {
+      margin-top: 1.5rem;
+      padding: 1rem 1rem 1.0625rem;
+      background: var(--panel);
+      border-radius: var(--radius-input);
+      border: 1px solid var(--border);
+    }
+    .verify-panel .panel-title {
+      display: block;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+    .verify-panel .support {
+      margin-bottom: 0.5625rem;
+    }
+    .verify-panel input {
+      background: #fff;
+    }
+    button[type="submit"] {
+      width: 100%;
+      margin-top: 1.5rem;
+      padding: 0.75rem 1rem;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: #fff;
+      background: var(--accent);
+      border: none;
+      border-radius: var(--radius-input);
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+    button[type="submit"]:hover {
+      background: var(--accent-hover);
+    }
+    button[type="submit"]:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 4px var(--accent-ring);
+    }
+    .foot {
+      margin-top: 1.25rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-align: center;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="card">
+      <div class="logo"><span>CurriculumPilot</span> · Admin</div>
+      <h1>Sign in</h1>
+      <p class="lead">Enter your operator credentials and complete verification to continue.</p>
+      {% if error %}<div class="err" role="alert">{{ error }}</div>{% endif %}
+      <form method="post" action="/admin/login">
+        <div class="stack">
+          <label class="field-label" for="password">Password</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" required/>
+        </div>
+        {% if security_question_enabled %}
+        <div class="stack">
+          <label class="field-label" for="security_answer">Security verification</label>
+          <p class="support">{{ security_question_text }}</p>
+          <input id="security_answer" name="security_answer" type="text" required autocomplete="off"/>
+        </div>
+        {% endif %}
+        <div class="verify-panel">
+          <span class="panel-title">Human verification</span>
+          <p class="support" id="captcha-hint">Enter the answer: <strong>{{ captcha_expression }}</strong> = ?</p>
+          <input id="captcha_answer" name="captcha_answer" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="4" required autocomplete="off" aria-describedby="captcha-hint" aria-label="Answer to arithmetic verification"/>
+        </div>
+        <button type="submit">Sign in</button>
+      </form>
+      <p class="foot">Admin access only.</p>
+    </div>
+  </div>
+</body>
+</html>
